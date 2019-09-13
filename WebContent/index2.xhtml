@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<script type="text/javascript">
+    PrimeFaces.locales['es'] = {
+        closeText: 'Cerrar',
+        prevText: 'Anterior',
+        nextText: 'Siguiente',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        weekHeader: 'Semana',
+        firstDayOfWeek: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Sólo hora',
+        timeText: 'Tiempo',
+        hourText: 'Hora',
+        minuteText: 'Minuto',
+        secondText: 'Segundo',
+        currentText: 'Fecha actual',
+        ampm: false,
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        allDayText: 'Todo el día'
+    };
+</script>
+
+	<script type="text/javascript">
+    //<![CDATA[
+    function dateTemplateFunc(date) {
+        return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+    }
+    //]]>
+</script>
+	<title>Lisboa02</title>
+</h:head>
+
+
+
+
+<h:body>
+
+	<h:form class="w3-container w3-teal  w3-padding-16" prependId="false">
+
+
+
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="2">
+	
+	
+	
+	Primeiro Nome: <p:inputText id="primeiroNome"
+				value="#{agenteBean.primeiroNome}"
+				class=" w3-padding-16  w3-pale-blue  w3-animate-left " />
+		
+	Telefone: <p:inputText id="telefone" value="#{agenteBean.telefone}"
+				class=" w3-padding-16  w3-pale-blue  w3-animate-left" />
+	
+	
+	Email 1: <p:inputText id="email1" value="#{agenteBean.email1}"
+				class=" w3-padding-16  w3-pale-blue  w3-animate-left" />
+		
+	Email 2: <p:inputText id="email2" value="#{agenteBean.email2}"
+				class=" w3-padding-16  w3-pale-blue  w3-animate-left" />
+		
+	Cidade: <p:inputText id="cidade" value="#{agenteBean.cidade}"
+				class=" w3-padding-16  w3-pale-blue  w3-animate-left" />
+
+			<p:messages>
+				<p:autoUpdate />
+			</p:messages>
+		</h:panelGrid>
+
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="2">
+
+
+			<p:outputLabel for="data" value="Data:" />
+			<p:datePicker id="data" value="#{calendarView.date7}" showIcon="true" />
+
+			<p:outputLabel for="tipoServiço" value="Tipo de Serviço:" />
+			<p:selectOneMenu id="tipoServiço"
+				value="#{selectOneMenuView.tipoServiço}" style="width:300px">
+				<f:selectItem itemLabel="Selecionar um" itemValue="" />
+				<f:selectItem itemLabel="Espionagem" itemValue="Espionagem" />
+				<f:selectItem itemLabel="Escolta" itemValue="Escolta" />
+				<f:selectItem itemLabel="Investigação" itemValue="Investigação" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="carateristica" value="Carateristicas:" />
+			<p:selectOneMenu id="carateristica"
+				value="#{selectOneMenuView.carateristica}" style="width:300px">
+				<f:selectItem itemLabel="Selecionar um" itemValue="" />
+				<f:selectItem itemLabel="Espionagem computacional"
+					itemValue="Espionagem Computacional" />
+				<f:selectItem itemLabel="Licença para matar"
+					itemValue="Licença para matar" />
+			</p:selectOneMenu>
+
+		</h:panelGrid>
+
+
+	</h:form>
+
+
+	<p:commandButton value="Ajax Submit" id="ajax"
+		action="#{agenteActions.submitForm()}" style="margin-right:20px;"
+		styleClass="ui-priority-primary" update="formulario" />
+
+
+	 <pre> <p:outputLabel id="formulario" value="#{agenteBean.form}"></p:outputLabel> </pre>
+
+
+
+</h:body>
+</html>
